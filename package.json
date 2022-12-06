@@ -1,0 +1,136 @@
+{
+    "name": "ottocalib",
+    "version": "0.1.0",
+    "description": "App to calibrate the Otto DIY robot",
+    "author": "Hitalo Silva <hitaloosilva@gmail.com>",
+    "license": "GPL-2.0",
+    "main": "main.js",
+    "keywords": [
+        "blockly",
+        "BLOCKLY",
+        "arduino",
+        "ARDUINO",
+        "esp32",
+        "ESP32",
+        "esp8266",
+        "ESP8266",
+        "electron",
+        "ELECTRON",
+        "OttoDIY",
+        "serialport",
+        "SERIALPORT",
+        "electron-builder",
+        "electron-updater",
+        "PYTHON",
+        "python",
+        "PYFLAKES",
+        "pyflakes",
+        "ampy",
+        "AMPY",
+        "microbit",
+        "MICROBIT"
+    ],
+    "scripts": {
+        "postinstall": "electron-builder install-app-deps",
+        "start": "electron .",
+        "compiler": "electron-builder --win --ia32",
+        "compiler:mac": "electron-builder --mac",
+        "compiler:linux": "electron-builder --linux --x64",
+        "publier": "electron-builder --win --ia32 -p always"
+    },
+    "build": {
+        "appId": "com.electron.ottoblockly",
+        "asar": false,
+        "directories": {
+            "buildResources": "./build",
+            "output": "./dist"
+        },
+        "nsis": {
+            "installerIcon": "build/install.ico",
+            "uninstallerIcon": "build/app.ico",
+            "oneClick": false,
+            "perMachine": true,
+            "deleteAppDataOnUninstall": true,
+            "allowToChangeInstallationDirectory": true,
+            "runAfterFinish": true,
+            "include": "build/ottoblockly.nsh"
+        },
+        "win": {
+            "target": [
+                "portable",
+                "nsis",
+                "zip"
+            ],
+            "icon": "build/app.ico"
+        },
+        "mac": {
+            "category": "public.app-category.graphics-design",
+            "icon": "build/file.icns"
+        },
+        "dmg": {
+            "contents": [
+                {
+                    "x": 120,
+                    "y": 220
+                },
+                {
+                    "x": 410,
+                    "y": 220,
+                    "type": "link",
+                    "path": "/Applications"
+                }
+            ]
+        },
+        "linux": {
+            "target": [
+                "AppImage",
+                "deb"
+            ]
+        },
+        "fileAssociations": {
+            "ext": "bloc",
+            "name": "BLOC File",
+            "role": "Editor",
+            "icon": "build/file.ico"
+        },
+        "extraFiles": [
+            "www",
+            "compilation",
+            "pilotes",
+            "README.md",
+            "LICENSE.md",
+            "config.json"
+        ],
+        "extraResources": [
+            "dev-app-update.yml",
+            "app-update.yml"
+        ],
+        "publish": [
+            {
+                "provider": "github",
+                "repo": "blockly",
+                "owner": "OttoDIY",
+                "releaseType": "release"
+            }
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/OttoDIY/blockly"
+    },
+    "bugs": {
+        "url": "https://github.com/OttoDIY/blockly/issues"
+    },
+    "devDependencies": {
+        "electron": "^18.0.4",
+        "electron-builder": "21.2.0",
+        "electron-installer-dmg": "3.0.0"
+    },
+    "dependencies": {
+        "ajv": "6.10.0",
+        "blockly": "^8.0.0",
+        "child_process": "1.0.2",
+        "electron-updater": "4.0.6",
+        "serialport": "^10.4.0"
+    }
+}
